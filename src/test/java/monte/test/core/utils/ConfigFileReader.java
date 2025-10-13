@@ -1,4 +1,4 @@
-package monte.test.utils;
+package monte.test.core.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package monte.test.model;
+package monte.test.core.model.api;
 
 public record PetRequest(
         String name,

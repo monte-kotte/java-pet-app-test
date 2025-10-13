@@ -1,7 +1,7 @@
-package monte.test;
+package monte.test.spec.rest;
 
-import monte.test.base.AbstractTest;
-import monte.test.model.PetResponse;
+import monte.test.spec.rest.base.AbstractTest;
+import monte.test.core.model.api.PetResponse;
 import org.testng.annotations.Test;
 
 import java.util.List;

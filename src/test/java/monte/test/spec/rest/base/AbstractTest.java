@@ -1,6 +1,6 @@
-package monte.test.base;
+package monte.test.spec.rest.base;
 
-import monte.test.client.TestPetApiClient;
+import monte.test.core.client.TestPetApiClient;
 import org.testng.annotations.BeforeClass;
 
 public abstract class AbstractTest {

@@ -1,7 +1,6 @@
-package monte.test.model;
+package monte.test.core.model.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum PetType {
     @JsonProperty("cat")

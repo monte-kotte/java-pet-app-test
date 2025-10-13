@@ -1,7 +1,7 @@
-package monte.test.utils;
+package monte.test.core.utils;
 
-import monte.test.model.PetRequest;
-import monte.test.model.PetType;
+import monte.test.core.model.api.PetRequest;
+import monte.test.core.model.api.PetType;
 
 import java.util.concurrent.ThreadLocalRandom;
 

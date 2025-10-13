@@ -1,13 +1,13 @@
-package monte.test.client;
+package monte.test.core.client;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import monte.test.model.PetRequest;
-import monte.test.model.PetResponse;
-import monte.test.utils.ConfigFileReader;
+import monte.test.core.model.api.PetRequest;
+import monte.test.core.model.api.PetResponse;
+import monte.test.core.utils.ConfigFileReader;
 
 import java.util.List;
 

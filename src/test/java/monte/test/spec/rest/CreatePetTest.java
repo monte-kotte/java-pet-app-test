@@ -1,9 +1,9 @@
-package monte.test;
+package monte.test.spec.rest;
 
-import monte.test.base.AbstractTest;
-import monte.test.model.PetRequest;
-import monte.test.model.PetResponse;
-import monte.test.utils.PetDataGenerator;
+import monte.test.spec.rest.base.AbstractTest;
+import monte.test.core.model.api.PetRequest;
+import monte.test.core.model.api.PetResponse;
+import monte.test.core.utils.PetDataGenerator;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
