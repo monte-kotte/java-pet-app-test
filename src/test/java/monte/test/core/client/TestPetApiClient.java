@@ -6,7 +6,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import monte.test.core.model.api.PetRequest;
-import monte.test.core.model.api.PetResponse;
 import monte.test.core.utils.ConfigFileReader;
 
 import java.util.List;
@@ -27,54 +26,49 @@ public class TestPetApiClient {
     }
 
     // ------------------- CREATE -------------------
-    public PetResponse createPet(PetRequest request) {
+    public Response createPet(PetRequest request) {
         return RestAssured.given(requestSpec)
                 .body(request)
                 .post(petServiceEndpoint)
                 .then()
-                .statusCode(201)
                 .extract()
-                .as(PetResponse.class);
+                .response();
     }
 
     // ------------------- GET BY ID -------------------
-    public PetResponse getPetById(String id) {
+    public Response getPetById(String id) {
         return RestAssured.given(requestSpec)
                 .get(petServiceEndpoint + "/" + id)
                 .then()
-                .statusCode(200)
                 .extract()
-                .as(PetResponse.class);
+                .response();
     }
 
     // ------------------- GET ALL -------------------
-    public List<PetResponse> getAllPets() {
-        Response response = RestAssured.given(requestSpec)
+    public Response getAllPets() {
+        return RestAssured.given(requestSpec)
                 .get(petServiceEndpoint)
                 .then()
-                .statusCode(200)
                 .extract()
                 .response();
-
-        return response.jsonPath().getList("", PetResponse.class);
     }
 
     // ------------------- UPDATE -------------------
-    public PetResponse updatePet(String id, PetRequest request) {
+    public Response updatePet(String id, PetRequest request) {
         return RestAssured.given(requestSpec)
                 .body(request)
                 .put(petServiceEndpoint + "/" + id)
                 .then()
-                .statusCode(200)
                 .extract()
-                .as(PetResponse.class);
+                .response();
     }
 
     // ------------------- DELETE -------------------
-    public void deletePet(String id) {
-        RestAssured.given(requestSpec)
+    public Response deletePet(String id) {
+        return RestAssured.given(requestSpec)
                 .delete(petServiceEndpoint + "/" + id)
                 .then()
-                .statusCode(204);
+                .extract()
+                .response();
     }
 }

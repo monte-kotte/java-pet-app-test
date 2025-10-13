@@ -11,10 +11,21 @@ public class PetDataGenerator {
             "Fluffy", "Buddy", "Mittens", "Charlie", "Bella", "Coco", "Luna", "Max"
     };
 
+    private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
+
     public static PetRequest randomPet() {
-        String name = NAMES[ThreadLocalRandom.current().nextInt(NAMES.length)];
-        PetType type = PetType.random();
-        int age = ThreadLocalRandom.current().nextInt(1, 15); // 1-14 years
-        return new PetRequest(name, type, age);
+        return PetRequest.builder()
+                .name(randomName())
+                .type(PetType.random())
+                .age(randomAge())
+                .build();
+    }
+
+    private static String randomName() {
+        return NAMES[RANDOM.nextInt(NAMES.length)];
+    }
+
+    private static int randomAge() {
+        return RANDOM.nextInt(1, 15); // 1–14 years
     }
 }

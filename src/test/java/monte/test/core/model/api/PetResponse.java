@@ -9,7 +9,5 @@ public record PetResponse(
         Long petId,
         String name,
         PetType type,
-        int age,
-        String createdAt,
-        String updatedAt
+        int age
 ) { }
