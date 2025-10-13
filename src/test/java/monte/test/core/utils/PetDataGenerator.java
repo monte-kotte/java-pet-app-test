@@ -1,5 +1,6 @@
 package monte.test.core.utils;
 
+import com.github.javafaker.Faker;
 import monte.test.core.model.api.PetRequest;
 import monte.test.core.model.api.PetType;
 
@@ -7,11 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class PetDataGenerator {
 
-    private static final String[] NAMES = {
-            "Fluffy", "Buddy", "Mittens", "Charlie", "Bella", "Coco", "Luna", "Max"
-    };
-
     private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
+    private static final Faker FAKER = new Faker();
 
     public static PetRequest randomPet() {
         return PetRequest.builder()
@@ -22,10 +20,10 @@ public class PetDataGenerator {
     }
 
     private static String randomName() {
-        return NAMES[RANDOM.nextInt(NAMES.length)];
+        return FAKER.animal().name();
     }
 
     private static int randomAge() {
-        return RANDOM.nextInt(1, 15); // 1–14 years
+        return RANDOM.nextInt(1, 21);
     }
 }
