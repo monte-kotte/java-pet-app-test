@@ -8,14 +8,14 @@ import io.restassured.specification.RequestSpecification;
 import monte.test.core.model.api.PetRequest;
 import monte.test.core.utils.ConfigFileReader;
 
-public class TestPetApiClient {
+public class PetApiClient {
 
     private final String petServiceUrl = ConfigFileReader.getPetServiceUrl();
     private final String petServiceEndpoint = ConfigFileReader.getPetServiceEndpoint();
 
     private final RequestSpecification requestSpec;
 
-    public TestPetApiClient() {
+    public PetApiClient() {
         this.requestSpec = new RequestSpecBuilder()
                 .setBaseUri(petServiceUrl)
                 .setContentType(ContentType.JSON)

@@ -1,17 +1,17 @@
 package monte.test.spec.rest.base;
 
-import monte.test.core.client.TestPetApiClient;
-import monte.test.core.utils.PetTestHelper;
+import monte.test.core.client.PetApiClient;
+import monte.test.core.utils.PetTestApiHelper;
 import org.testng.annotations.BeforeClass;
 
 public abstract class AbstractTest {
 
-    protected TestPetApiClient petApiClient;
-    protected PetTestHelper petHelper;
+    protected PetApiClient petApiClient;
+    protected PetTestApiHelper petHelper;
 
     @BeforeClass
     public void setup() {
-        petApiClient = new TestPetApiClient();
-        petHelper = new PetTestHelper(petApiClient);
+        petApiClient = new PetApiClient();
+        petHelper = new PetTestApiHelper(petApiClient);
     }
 }
