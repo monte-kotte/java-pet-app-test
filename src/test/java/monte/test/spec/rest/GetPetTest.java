@@ -13,13 +13,8 @@ public class GetPetTest extends AbstractTest {
 
     @Test
     public void testGetPetByPetId() {
-        // Prepare request data - create a pet
-        PetRequest request = PetDataGenerator.randomPet();
-        Response responseCreate = petApiClient.createPet(request);
-        PetResponse createdPet = responseCreate
-                .body()
-                .as(PetResponse.class);
-
+        // Given a pet created
+        PetResponse createdPet = petHelper.createTestPet();
         String petId = createdPet.petId();
 
         // Get pet by id

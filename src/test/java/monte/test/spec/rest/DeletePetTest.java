@@ -17,14 +17,8 @@ public class DeletePetTest extends AbstractTest {
 
     @Test
     public void testDeletePet() {
-        // Prepare request data
-        PetRequest request = PetDataGenerator.randomPet();
-        // Create a pet
-        Response responseCreate = petApiClient.createPet(request);
-        PetResponse createdPet = responseCreate
-                .body()
-                .as(PetResponse.class);
-
+        // Given a pet created
+        PetResponse createdPet = petHelper.createTestPet();
         String petId = createdPet.petId();
 
         // Delete the pet
@@ -41,7 +35,7 @@ public class DeletePetTest extends AbstractTest {
         assertThat(deleteResponse.message())
                 .isEqualTo(DeleteMessages.PET_DELETED);
 
-        // Verify that pet not found on get by id
+        // Verify that pet not found on 'get by id'
         response = petApiClient.getPetById(petId);
         assertThat(response.statusCode())
                 .isEqualTo(404);

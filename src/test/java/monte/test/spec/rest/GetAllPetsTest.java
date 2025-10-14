@@ -11,7 +11,10 @@ public class GetAllPetsTest extends AbstractTest {
 
     @Test
     public void testGetAllPets() {
-        // Call the client
+        // Given a pet created
+        PetResponse createdPet = petHelper.createTestPet();
+
+        // Get all pets
         Response response = petApiClient.getAllPets();
 
         // Asserting response
@@ -22,6 +25,6 @@ public class GetAllPetsTest extends AbstractTest {
                 .as(PetResponse[].class);
 
         assertThat(allPets).isNotNull();
-        assertThat(allPets.length).isGreaterThanOrEqualTo(0);
+        assertThat(allPets.length).isGreaterThanOrEqualTo(1);
     }
 }
