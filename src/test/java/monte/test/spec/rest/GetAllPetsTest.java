@@ -13,11 +13,14 @@ public class GetAllPetsTest extends AbstractTest {
     public void testGetAllPets() {
         // Call the client
         Response apiResponse = petApiClient.getAllPets();
+
+        // Asserting response
+        assertThat(apiResponse.statusCode()).isEqualTo(200);
+
         PetResponse[] allPets = apiResponse
                 .body()
                 .as(PetResponse[].class);
 
-        // Basic assertions
         assertThat(allPets).isNotNull();
         assertThat(allPets.length).isGreaterThanOrEqualTo(0);
     }
