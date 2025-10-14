@@ -1,25 +1,20 @@
 package monte.test.core.utils;
 
 import io.restassured.response.Response;
-import monte.test.core.client.TestPetApiClient;
+import monte.test.core.client.PetApiClient;
 import monte.test.core.model.api.PetRequest;
 import monte.test.core.model.api.PetResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PetTestHelper {
+public class PetTestApiHelper {
 
-    private final TestPetApiClient petApiClient;
+    private final PetApiClient petApiClient;
 
-    public PetTestHelper(TestPetApiClient petApiClient) {
+    public PetTestApiHelper(PetApiClient petApiClient) {
         this.petApiClient = petApiClient;
     }
 
-    /**
-     * Creates a new pet with random data and asserts that creation succeeded.
-     *
-     * @return the created PetResponse object
-     */
     public PetResponse createTestPet() {
         PetRequest request = PetDataGenerator.randomPet();
         Response response = petApiClient.createPet(request);
@@ -30,9 +25,6 @@ public class PetTestHelper {
         return response.body().as(PetResponse.class);
     }
 
-    /**
-     * Deletes a pet and validates the response.
-     */
     public void deleteTestPet(String petId) {
         Response response = petApiClient.deletePet(petId);
         assertThat(response.statusCode())
