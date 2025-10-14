@@ -13,14 +13,8 @@ public class UpdatePetTest extends AbstractTest {
 
     @Test
     public void testUpdatePet() {
-        // Prepare request data
-        PetRequest request = PetDataGenerator.randomPet();
-        // Create a pet
-        Response responseCreate = petApiClient.createPet(request);
-        PetResponse createdPet = responseCreate
-                .body()
-                .as(PetResponse.class);
-
+        // Given a pet created
+        PetResponse createdPet = petHelper.createTestPet();
         String petId = createdPet.petId();
 
         // Update the pet
