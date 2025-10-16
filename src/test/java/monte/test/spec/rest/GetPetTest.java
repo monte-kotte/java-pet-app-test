@@ -1,9 +1,7 @@
 package monte.test.spec.rest;
 
 import io.restassured.response.Response;
-import monte.test.core.model.api.PetRequest;
 import monte.test.core.model.api.PetResponse;
-import monte.test.core.utils.PetDataGenerator;
 import monte.test.spec.rest.base.AbstractTest;
 import org.testng.annotations.Test;
 
