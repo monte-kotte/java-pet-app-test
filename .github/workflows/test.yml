@@ -1,0 +1,55 @@
+name: Run Integration Tests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout test repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Checkout backend repository
+        uses: actions/checkout@v4
+        with:
+          repository: monte-kotte/js-mongo-pet-app
+          path: backend
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Start backend with Docker Compose
+        working-directory: backend
+        run: |
+          docker-compose up -d
+          npm start &
+
+      - name: Wait for backend to be ready
+        run: |
+          timeout 60 bash -c 'until curl -f http://localhost:3000/api/pets; do sleep 2; done'
+
+      - name: Run tests
+        run: mvn clean test
+
+      - name: Stop backend
+        if: always()
+        working-directory: backend
+        run: docker-compose down
